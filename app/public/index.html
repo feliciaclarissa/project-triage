@@ -3,9 +3,40 @@
 <head>
   <meta charset="utf-8">
   <title>My Page Title</title>
-  <link rel="stylesheet" href="/css/site.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
+  <link rel="stylesheet" href="css/site.css"></link>
 </head>
 <body>
-<p>My content goes here.</p>
+  <div class="container">
+  <div class="row">
+    <div id="mainContent" class="col">
+      registration form
+    </div>
+    <div id="patientWaitingApp" class="col-md-4 queueView">
+    <div class= "patientWaiting patient" v-for="patient in patients">
+      arrival time<br />
+      <span class="patientName"> {{patient.lastName}}</span>
+      <span class="patientName"> {{patient.firstName}}</span><br />
+      <span> {{patient.dob}}</span><br />
+      <span> {{patient.sexAtBirth}}</span>
+       {{message}}
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+var app = new Vue({
+  el: '#patientWaitingApp',
+  data: {
+    patients: {
+      "patientGuid":1,
+      "firstName":"Edgar",
+      "lastName":"Truran",
+      "dob":"2/17/2019",
+      "sexAtBirth":"Male"
+    }
+  }
+})
+</script>
 </body>
 </html>
