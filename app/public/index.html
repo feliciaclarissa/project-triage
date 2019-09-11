@@ -13,30 +13,15 @@
       registration form
     </div>
     <div id="patientWaitingApp" class="col-md-4 queueView">
-    <div class= "patientWaiting patient" v-for="patient in patients">
-      arrival time<br />
+    <div class= " patient patientWaiting" v-for="patient in patients">
+      Arrival date<br />
       <span class="patientName"> {{patient.lastName}}</span>
       <span class="patientName"> {{patient.firstName}}</span><br />
-      <span> {{patient.dob}}</span><br />
-      <span> {{patient.sexAtBirth}}</span>
-       {{message}}
+      {{patient.dob}} {{patient.sexAtBirth}}
     </div>
   </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script>
-var app = new Vue({
-  el: '#patientWaitingApp',
-  data: {
-    patients: {
-      "patientGuid":1,
-      "firstName":"Edgar",
-      "lastName":"Truran",
-      "dob":"2/17/2019",
-      "sexAtBirth":"Male"
-    }
-  }
-})
-</script>
+<script src="js/waiting.app.js"></script>
 </body>
 </html>
