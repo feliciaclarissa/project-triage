@@ -12,6 +12,26 @@
     <div id="mainContent" class="col">
       registration form
     </div>
+    <div id="patientRecordApp">      
+    <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">DOB</th>
+      <th scope="col">sexAtBirth</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr v-for="p in patients">
+      <td>{{p.firstName}}</td>
+      <td>{{p.lastName}}</td>
+      <td>{{p.dob}}</td>
+      <td>{{p.sexAtBirth}}</td>
+    </tr>
+  </tbody>
+</table>
+  </div>
     <div id="patientWaitingApp" class="col-md-4 queueView">
     <div class= " patient patientWaiting"
     :class="patient.priority +'Priority'"
@@ -25,5 +45,6 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="js/waiting.app.js"></script>
+<script src="js/record.app.js"></script>
 </body>
 </html>
