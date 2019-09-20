@@ -7,33 +7,53 @@
   <link rel="stylesheet" href="css/site.css"></link>
 </head>
 <body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
   <div class="container">
   <div class="row">
     <div id="mainContent" class="col">
       <div id="patientRecordApp">
-        <form>
+        <form @submit.prevent="handleCreateRecord">
           <div class="form-group row">
             <label for="inputFirstName" class="col-sm-2 col-form-label">First Name</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputFirstName" placeholder="First Name">
+              <input type="text" class="form-control" id="inputFirstName" placeholder="First Name" v-model="formPatient.firstName" name "fn">
             </div>
           </div>
           <div class="form-group row">
             <label for="inputLastName" class="col-sm-2 col-form-label">Last Name</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputLastName" placeholder="Last Name">
+              <input type="text" class="form-control" id="inputLastName" placeholder="Last Name" v-model="formPatient.lastName">
             </div>
           </div>
           <div class="form-group row">
             <label for="inputDob" class="col-sm-2 col-form-label">DOB</label>
             <div class="col-sm-10">
-              <input type="date" class="form-control" id="inputDob" placeholder="2001-12-13">
+              <input type="date" class="form-control" id="inputDob" placeholder="2001-12-13" v-model="formPatient.DOB">
             </div>
           </div>
           <div class="form-group row">
             <label for="inputSexAtBirth" class="col-sm-2 col-form-label">sexAtBirth</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputSexAtBirth" placeholder="sexAtBirth">
+              <input type="text" class="form-control" id="inputSexAtBirth" placeholder="sexAtBirth" v-model="formPatient.sexAtBirth">
             </div>
           </div>
           <div class="form-group row">
@@ -42,7 +62,7 @@
     </div>
   </div>
   </form>
-        <table class="table table-striped">
+        <table class="table table-sm table-hover">
           <thead>
             <tr>
               <th scope="col">GUID</th>
@@ -53,7 +73,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="p in patients">
+            <tr v-for="p in patients" @click="handleRecordClick(p)">
               <td>{{p.patientGuid}}</td>
               <td>{{p.firstName}}</td>
               <td>{{p.lastName}}</td>
@@ -64,9 +84,7 @@
         </table>
           </div>
       </div>
-    <div id="patientTriageApp">
-              (do this later)
-    </div>
+
 
     <div id="patientWaitingApp" class="col-md-4 queueView">
     <div class= " patient patientWaiting"
