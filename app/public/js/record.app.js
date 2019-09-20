@@ -2,7 +2,7 @@ var patientRecordApp = new Vue({
   el: '#patientRecordApp',
   data: {           //*variable that we use
     patients: [],
-    formPatient ={
+    formPatient:{
       firstName: '',
       lastName:'',
       dob:'',
