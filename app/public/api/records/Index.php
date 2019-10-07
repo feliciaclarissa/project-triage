@@ -4,8 +4,16 @@
 $db = DbConnection::getConnection();
 
 // Step 2: Create & run the query
-$stmt = $db->prepare('SELECT * FROM Patient');
-$stmt->execute();
+if (isset($_GET['guid'])){
+  $stmt = $db->prepare('SELECT * FROM Patient
+    where guid = ?'
+};
+$stmt->execute([$_GET['guid']]);
+} else {
+ $stmt = $db->prepare('SELECT * FROM Patient');
+ $stmt->execute();
+}
+
 $patients = $stmt->fetchAll();
 
 // patientGuid VARCHAR(64) PRIMARY KEY,
